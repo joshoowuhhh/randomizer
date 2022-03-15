@@ -1,30 +1,68 @@
-let mood = ['gigantic', 'dancing', 'hopping', 'wiggling', 'groovy', 'moonwalking', 'jolly', 'rapturous'];
+let renaissanceImg = []
+let frame;
+let phase = 'cover;'
+let myFont;
+let coverSize;
+let studySize;
+let listSize;
+let retrySize;
+let img = 0;
+let yD = 0;
+let leaf = 0;
+let flow = 0;
+let fate = 0;
+let wrds1 = '';
+let wrds2 = '';
+
+let yourDay = ['your day will consist of', 'dancing', 'hopping', 'wiggling', 'groovy', 'moonwalking', 'jolly', 'rapturous'];
+
 let geo = ['hairy', 'bald', 'gentle', 'sharp', 'shaky', 'hungry', 'elegant', 'cruel', 'cynical', 'filthy'];
+
 let being = ['zombie', 'old lady', 'dinosaur', 'Transformer', 'Hobit', 'gremlin', 'robot', 'Stormtrooper'];
 
-let mr;
-let gr;
-let br;
-let sr;
-
-let rc = 20;
-let gc = 100;
-let bc = 250;
-
-let wrds;
+function preload() {
+  for (i = 0; i <= 20; i++) {
+    plantImg[i] = loadImage('renaissanceImg/' + [i] + '.jpg');
+  }
+  frame = loadImage('renaissanceImg/frame2.jpg');
+  myFont = loadFont('renaissanceImg/fonts/DancingScript-Regular.ttf');
+}
 
 function setup() {
-  createCanvas(600, 600);
-  background(0);
-  frameRate(60);
-  intText();
-  fortSmiley();
-  console.log(mood[int(random(mood.length))]);
-  console.log(being.length);
-
+   let canvas = createCanvas(windowWidth*0.5, (windowWidth*0.5)*1.25);
+  canvas.parent('myCanvas');
+  let button = createButton('Click here to see what your day will consist of.');
+  button.parent('button-holder');
+  button.mousePressed(divination);
+  frameRate(30);
+  imageMode(CENTER);
+  textAlign(CENTER);
+  textFont(myFont);
+  textSize(20);
+  textResize();
+  coverDisplay();
 }
 
 function draw() {
+}
+
+function divination() {
+  phase = 'playing';
+  img = int(random(renaissanceImg.length));
+  rS = int(random(yourDay.length));
+  leaf = int(random(leaves.length));
+  flow = int(random(flowers.length));
+  fort = int(random(fortunes.length));
+  fort2 = int(random(fortunes2.length));
+  fort3 = int(random(fortunes3.length));
+  wrds1 = 'Your day will ' + yourDay[yD] + ' ' + fortunes[fort];
+  wrds2 = 'If it has ' + leaves[leaf] + ' ' + fortunes2[fort2];
+  wrds3 = 'If it has ' + flowers[flow] + ' ' + fortunes3[fort3];
+  console.log(wrds1);
+  console.log(wrds2);
+  console.log(wrds3);
+  divImage();
+  divText();
 }
 
 function mousePressed() {
@@ -39,31 +77,12 @@ function mousePressed() {
   console.log(wrds);
 }
 
-function fortSmiley() {
-  fill(rc, gc, bc);
-  //smileyface
-  ellipse(300, 295, 170, 170);
-  
- //smileyface mouth
-  push();
-  fill(255, 255, 255);
-  arc(300, 311, 110, 85, radians(0), 
-  radians(180));
-  pop();
-  
-//smileyface top outline
-  push();
-  c = color(255, 255, 255)
-  fill(255, 255, 255);
-  line(245, 311, 355, 311);
-  pop();
-  
-//smileyface eyes
-  push();
-  fill(5, 5, 0);
-  ellipse(264, 275, 37, 37);
-  ellipse(335, 275, 37, 37);
-  pop();
+function coverDisplay() {
+  //background(220);
+  image(frame, width*0.5,height*0.5, width, height);
+  textSize(coverSize);
+  text('Press the button below', width * 0.5, height * 0.4);
+  text('to see what your day holds before you.', width * 0.5, height * 0.5);
 }
 
 
