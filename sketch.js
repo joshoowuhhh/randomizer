@@ -1,129 +1,120 @@
-let renaissanceImg = []
-let frame;
-let phase = 'cover;'
-let myFont;
-let coverSize;
-let studySize;
-let listSize;
-let retrySize;
-let img = 0;
-let yD = 0;
-let aspect = 0;
-let oP = 0;
-let wrds1 = '';
-let wrds2 = '';
+let yourDay = ['isolation,', 'fear,', 'hope,', 'discovery,', 'happiness,', 'friendship,', 'forgiveness,','conquer,', 'thinking,','knowledge,','unity,'];
+let aspect = ['along with smiles,', 'along with hugs,', 'along with laughs,', 'along with yells,', 'along with dances,', 'along with cries,', 'along with high-fives,', 'along with conversations,', 'along with discussions,', 'along with fights,'];
+let opportunities = ['ending with a new friend', 'ending with a new found skill', 'ending with a new sense of determination', 'ending with a new sense of life', 'ending with a new favorite hobby', 'ending with a new sense of worth', 'ending with shame', 'ending with being content', 'ending with being in love', 'ending with being alone','ending with finding your true self'];
 
-let yourDay = ['your day will consist of', 'your day will involve the', 'your day will revolve around'];
+let yD;
+let aP;
+let oP;
 
-let aspect = ['hairy', 'bald', 'gentle', 'sharp', 'shaky', 'hungry', 'elegant', 'cruel', 'cynical', 'filthy'];
+let rc = 216;
+let gc = 230;
+let bc = 190;
 
-let opprotunities = ['zombie', 'old lady', 'dinosaur', 'Transformer', 'Hobit', 'gremlin', 'robot', 'Stormtrooper'];
+let wrds1;
 
-function preload() {
-  for (i = 0; i <= 20; i++) {
-    plantImg[i] = loadImage('renaissanceImg/' + [i] + '.jpg');
-  }
-  frame = loadImage('renaissanceImg/frame2.jpg');
-  myFont = loadFont('renaissanceImg/fonts/PlayfairDisplay-Regular.ttf');
-}
 
 function setup() {
-  let canvas = createCanvas(windowWidth * 0.5, (windowWidth * 0.5) * 1.25);
-  canvas.parent('myCanvas');
-  let button = createButton('Click here to see what your day will consist of.');
-  button.parent('button-holder');
-  button.mousePressed(divination);
-  frameRate(30);
-  imageMode(CENTER);
-  textAlign(CENTER);
-  textFont(myFont);
-  textSize(20);
-  textResize();
-  coverDisplay();
+  createCanvas(600, 600);
+  background(232, 189, 132);
+  frameRate(60);
+  intText();
+   textStyle(BOLDITALIC);
+  mySmiley();
+ // fortCirc1();
+ // fortCirc2();
+  console.log(yourDay[int(random(yourDay.length))]);
+  console.log(opportunities.length);
+
 }
 
-function draw() {}
+function draw() {
+}
 
-function divination() {
-  phase = 'playing';
-  img = int(random(renaissanceImg.length));
+
+function mousePressed() {
   yD = int(random(yourDay.length));
-  aspect = int(random(aspect.length));
-  oP = int(random(opprotunities.length));
-  fort = int(random(fortunes.length));
-  fort2 = int(random(fortunes2.length));
-  fort3 = int(random(fortunes3.length));
-  wrds1 = 'Your day will ' + yourDay[yD] + ' ' + fortunes[fort];
-  wrds2 = 'Aspects of your day will ' + leaves[leaf] + ' ' + fortunes2[fort2];
-  wrds3 = 'New opprotunities such as ' + flowers[flow] + ' ' + fortunes3[fort3];
+  aP = int(random(aspect.length));
+  oP = int(random(opportunities.length));
+  wrds1 = yourDay[yD] + ' ' + aspect[aP] + ' ' + opportunities[oP] + '.';
+  rc = random(600);
+  gc = random(600);
+  bc = random(600);
+  myText();
   console.log(wrds1);
-  console.log(wrds2);
-  console.log(wrds3);
-  divImage();
-  divText();
 }
 
-function coverDisplay() {
-  //background(220);
-  image(frame, width * 0.5, height * 0.5, width, height);
-  textSize(coverSize);
-  text('Press the button below', width * 0.5, height * 0.4);
-  text('to see what your day holds before you.', width * 0.5, height * 0.5);
+function mySmiley() {
+  fill(rc, gc, bc);
+   //smileyface
+  ellipse(300, 295, 170, 170);
+
+ //smileyface mouth
+  push();
+  fill(255, 255, 255);
+  arc(300, 311, 110, 85, radians(0),
+  radians(180));
+  pop();
+
+//smileyface top outline
+  push();
+  c = color(255, 255, 255)
+  fill(255, 255, 255);
+  line(245, 311, 355, 311);
+  pop();
+
+//smileyface eyes
+  push();
+  fill(5, 5, 0);
+  ellipse(264, 275, 37, 37);
+  ellipse(335, 275, 37, 37);
+  pop();
 }
 
-function divImage() {
-  //background(255);
-  image(frame, width * 0.5, height * 0.5, width, height);
-  image(plantImg[img], width * 0.5, height * 0.4, width * 0.2812, width * 0.5);
-}
 
-function divText() {
-  textSize(studySize);
-  text('Study the plant:', width / 2, height * 0.625);
-  textSize(listSize);
-  text(wrds1, width / 2, height * 0.675);
-  text(wrds2, width / 2, height * 0.7);
-  text(wrds3, width / 2, height * 0.725);
-  textSize(retrySize);
-  text('If the plant matches none of these, try again.', width / 2, height * 0.8);
-}
-
-function textResize() {
-  if (windowWidth > 1500) {
-    coverSize = 40;
-    studySize = 30;
-    listSize = 18;
-    retrySize = 16;
-  } else if (windowWidth > 1200) {
-    coverSize = 34;
-    studySize = 26;
-    listSize = 14;
-    retrySize = 12;
-  } else if (windowWidth > 900) {
-    coverSize = 30;
-    studySize = 20;
-    listSize = 12;
-    retrySize = 10;
-  } else if (windowWidth > 600) {
-    coverSize = 24;
-    studySize = 18;
-    listSize = 10;
-    retrySize = 9;
-  }
-}
-
-function windowResized() {
-  resizeCanvas(windowWidth * 0.5, (windowWidth * 0.5) * 1.25);
-  if (phase == 'cover') {
-    coverDisplay();
-  } else if (phase == 'playing') {
-    divImage();
-    divText();
-  }
-  textResize();
-}
-
-//function fortRect() {
-//fill(rc, gc, bc);
-//rect(width*0.5,height*0.5, 100);
+//function fortCirc1() {
+  //fill(rc, gc, bc);
+  //circle(30, 30, 20);
 //}
+
+//function fortCirc2() {
+ // fill(rc, gc, bc);
+ // circle(width*0.8, height*0.5);
+//}
+
+function mySmiley2() {
+  fill(rc, gc, bc);
+  ellipse(width*0.5,height*0.5, 50, 150);
+}
+
+function intText() {
+  push();
+  fill(51, 33, 8);
+  textAlign(CENTER);
+  textStyle(BOLDITALIC);
+  textSize(19);
+  text('Click the smiley face to see what your day today will consist of.', width*0.5, height*0.13);
+  pop();
+}
+
+function myText() {
+  push();
+  background(232, 189, 132);
+  circle(rc, gc, bc)
+  fill(rc, gc, bc);
+  rect(gc, bc, rc);
+  fill(gc, rc, bc);
+  square(bc, rc, gc);
+  fill(bc, rc, gc);
+  intText();
+  mySmiley();
+  fill(bc, gc, rc);
+  //fortCirc1();
+  //fortCirc2();
+  fill(51, 33, 8);
+  textAlign(CENTER);
+  textSize(14);
+  text('Your day will consist of', width*0.5, height*0.26);
+  text(wrds1, width*0.5, height*0.3)
+  text('Click again to see what your day tomorrow will consist of!', width*0.5, height*0.75)
+  pop();
+}
