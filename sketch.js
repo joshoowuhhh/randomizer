@@ -47,21 +47,21 @@ function mySmiley() {
   fill(rc, gc, bc);
    //smileyface
   ellipse(300, 295, 170, 170);
-  
+
  //smileyface mouth
   push();
   fill(255, 255, 255);
-  arc(300, 311, 110, 85, radians(0), 
+  arc(300, 311, 110, 85, radians(0),
   radians(180));
   pop();
-  
+
 //smileyface top outline
   push();
   c = color(255, 255, 255)
   fill(255, 255, 255);
   line(245, 311, 355, 311);
   pop();
-  
+
 //smileyface eyes
   push();
   fill(5, 5, 0);
@@ -93,6 +93,7 @@ function intText() {
   textStyle(BOLDITALIC);
   textSize(19);
   text('Click the smiley face to see what your day today will consist of.', width*0.5, height*0.13);
+  text('There are THREE shapes that can appear within this randomizer.', width*0.5, height*0.18);
   pop();
 }
 
@@ -114,7 +115,13 @@ function myText() {
   textAlign(CENTER);
   textSize(14);
   text('Your day will consist of', width*0.5, height*0.26);
-  text(wrds1, width*0.5, height*0.3)
-  text('Click again to see what your day tomorrow will consist of!', width*0.5, height*0.75)
+  text(wrds1, width*0.5, height*0.3);
+  text("If only one shape matches smileyface's color, only the first description will come true!", width*0.5, height*0.7);
+  text("If two shapes match the smiley smileyface's color, only the first", width*0.5, height*0.75);
+  text("and second description will come true!", width*0.5, height*0.78);
+  text("If all THREE shapes appear, two shapes match the smiley smileyface's color,", width*0.5, height*0.83);
+  text("the whole reading will come true! ", width*0.5, height*0.86);
+  text('Click again to see what your day tomorrow will consist of!', width*0.5, height*0.9);
+
   pop();
 }
