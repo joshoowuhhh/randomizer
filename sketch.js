@@ -25,13 +25,15 @@ function setup() {
   console.log(yourDay[int(random(yourDay.length))]);
   console.log(opportunities.length);
 
+  button = createButton("Click to randomize");
+  button.mousePressed(buttonPressed);
 }
 
 function draw() {
 }
 
 
-function mousePressed() {
+function buttonPressed() {
   yD = int(random(yourDay.length));
   aP = int(random(aspect.length));
   oP = int(random(opportunities.length));
@@ -92,7 +94,7 @@ function intText() {
   textAlign(CENTER);
   textStyle(BOLDITALIC);
   textSize(19);
-  text('Click the smiley face to see what your day today will consist of.', width*0.5, height*0.13);
+  text('Click the button to see what your day today will consist of.', width*0.5, height*0.13);
   text('There are THREE shapes that can appear within this randomizer.', width*0.5, height*0.18);
   pop();
 }
