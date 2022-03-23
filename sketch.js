@@ -25,7 +25,7 @@ function setup() {
   console.log(yourDay[int(random(yourDay.length))]);
   console.log(opportunities.length);
 
-  button = createButton("Click to shuffle choices");
+  button = createButton("Click for reading");
   button.mousePressed(buttonPressed);
 
 }
