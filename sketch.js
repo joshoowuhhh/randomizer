@@ -18,7 +18,7 @@ function setup() {
   background(232, 189, 132);
   frameRate(60);
   intText();
-   textStyle(BOLDITALIC);
+  textStyle(BOLDITALIC);
   mySmiley();
  // fortCirc1();
  // fortCirc2();
@@ -27,6 +27,7 @@ function setup() {
 
   button = createButton("Click to randomize");
   button.mousePressed(buttonPressed);
+
 }
 
 function draw() {
@@ -102,7 +103,7 @@ function intText() {
 function myText() {
   push();
   background(232, 189, 132);
-  circle(rc, gc, bc)
+  circle(rc, gc, bc);
   fill(rc, gc, bc);
   rect(gc, bc, rc);
   fill(gc, rc, bc);
@@ -124,6 +125,5 @@ function myText() {
   text("If all THREE shapes appear, two shapes match the smiley smileyface's color,", width*0.5, height*0.83);
   text("the whole reading will come true! ", width*0.5, height*0.86);
   text('Click again to see what your day tomorrow will consist of!', width*0.5, height*0.9);
-
   pop();
 }
