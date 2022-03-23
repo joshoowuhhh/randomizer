@@ -25,7 +25,7 @@ function setup() {
   console.log(yourDay[int(random(yourDay.length))]);
   console.log(opportunities.length);
 
-  button = createButton("Click to randomize");
+  button = createButton("Click to shuffle choices");
   button.mousePressed(buttonPressed);
 
 }
@@ -35,15 +35,18 @@ function draw() {
 
 
 function buttonPressed() {
+  push();
   yD = int(random(yourDay.length));
   aP = int(random(aspect.length));
   oP = int(random(opportunities.length));
   wrds1 = yourDay[yD] + ' ' + aspect[aP] + ' ' + opportunities[oP] + '.';
+  textSize(20);
   rc = random(600);
   gc = random(600);
   bc = random(600);
   myText();
   console.log(wrds1);
+  pop();
 }
 
 function mySmiley() {
@@ -116,13 +119,13 @@ function myText() {
   //fortCirc2();
   fill(51, 33, 8);
   textAlign(CENTER);
-  textSize(14);
+  textSize(14.2);
   text('Your day will consist of', width*0.5, height*0.26);
   text(wrds1, width*0.5, height*0.3);
   text("If only one shape matches smileyface's color, only the first description will come true!", width*0.5, height*0.7);
   text("If two shapes match the smiley smileyface's color, only the first", width*0.5, height*0.75);
   text("and second description will come true!", width*0.5, height*0.78);
-  text("If all THREE shapes appear, two shapes match the smiley smileyface's color,", width*0.5, height*0.83);
+  text("If all THREE shapes appear and two shapes match the smiley smileyface's color,", width*0.5, height*0.83);
   text("the whole reading will come true! ", width*0.5, height*0.86);
   text('Click again to see what your day tomorrow will consist of!', width*0.5, height*0.9);
   pop();
